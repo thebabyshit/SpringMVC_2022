@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>hibernate</title>
+    <link th:href="@{../css/test.css}" type="text/css" rel="stylesheet">
+</head>
+<body class="back">
+    <h1 class="fontStyle">JdbcTemplate Test</h1>
+    <a th:href="@{/get/2}">查询第二条数据</a><br/>
+    <form th:action="@{/save}" method="post">
+        ID:<input type="number" name="id" id="uid"/><br>
+        NAME:<input type="text" name="name" id="uname"/><br/>
+        Address:<input type="text" name="address" id="uaddress"/><br/>
+        <input type="submit" value="提交一份数据到数据库1">
+    </form>
+    <img src="../images/712098.jpg" width="100px" height="60px"><br/>
+    <button id="btn1">这是一个平平五七的按钮</button>
+</body>
+</html>
+<script type="text/javascript" th:src="@{../js/jquery-3.6.1.js}"></script>
+<script>
+    //https://cdn.bootcss.com/jquery/3.6.1/jquery.min.js
+    $(function (){
+
+        var $id = $("#uid");
+        var $name = $("#uname");
+        var $address = $("#uaddress");
+
+        $("#btn1").click(function (){
+            let id =$id.val();
+            let name = $name.val();
+            let address = $address.val();
+
+            console.log(id);
+            $.ajax({
+                type:"post",
+                contentType:"application/json",
+                dataType:"json",
+                url:"http://localhost:8080/1_requestParam_war_exploded/save2",
+
+                data: JSON.stringify({
+                    "id":id,
+                    "name":name,
+                    "address":address
+                }),
+                success:function (res){
+                    // 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+                    // 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+                    console.log("---------------------------------------------------------");
+                    console.log("SUCCESS");
+                    for (var v in res){
+                        console.log(v+" "+res[v]);
+                    }
+                    // console.log(res);
+                    console.log("---------------------------------------------------------");
+                },
+                error:function (res){
+                    console.log("---------------------------------------------------------");
+                    console.log("ERROR");
+                    // console.log(res);
+                    for (var v in res){
+                        console.log(v+" "+res[v]);
+                    }
+                    console.log("---------------------------------------------------------");
+                }
+            });
+        });
+    }).ready();
+
+</script>

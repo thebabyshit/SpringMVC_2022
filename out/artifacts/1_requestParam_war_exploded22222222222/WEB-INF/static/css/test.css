@@ -1,0 +1,14 @@
+.back{
+    background-color: aqua;
+}
+
+.fontStyle{
+    font-family: 隶书;
+    font-size: larger;
+    background-color: brown;
+}
+
+a{
+    font-size: larger;
+    color: blueviolet;
+}

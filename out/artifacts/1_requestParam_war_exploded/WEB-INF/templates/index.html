@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>hibernate</title>
+    <link type="text/css" rel="stylesheet" th:href="@{../css/test.css}">
+</head>
+<body>
+<!--<h1>国际知名程序HelloWorld</h1>-->
+<h2>@RequestMapping</h2>
+<h3> 注解使用位置</h3>
+<a th:href="@{/req}">@RequestMapping 使用位置 --> /req  仅在类前</a></br>
+<a th:href="@{/req/location}">@RequestMapping 使用位置 --> /req/location  在类/方法前</a></br>
+<a th:href="@{/location}">@RequestMapping 使用位置 --> /../location  跳到方法前</a></br>
+
+<h3> value</h3>
+<a th:href="@{/req/v}">@RequestMapping value --> /req/  </a></br>
+<a th:href="@{/req/v1}">@RequestMapping value --> /req/v1  </a></br>
+<a th:href="@{/req/v2}">@RequestMapping value --> /req/v2  </a></br>
+<a th:href="@{/req/v3}">@RequestMapping value --> /req/v3  </a></br>
+
+<h3> method</h3>
+<a th:href="@{/req/m1}">@RequestMapping method:get --> /req/m1  </a></br>
+<a th:href="@{/req/m2}">@RequestMapping method:get --> /req/m2  </a></br>
+<form method="post" th:action="@{/req/m2}">
+    <input type="submit"/>
+</form>
+<form method="post" th:action="@{/req/m3}">
+    <input type="submit"/>
+</form>
+<a th:href="@{/req/m3}">@RequestMapping method:get --> /req/m3  </a></br>
+<form method="put" th:action="@{/req/m4}">
+    <input type="submit"/>
+</form>
+
+<h3> params</h3>
+<a th:href="@{/req/p}">@RequestMapping param --> /req/p  </a></br>
+<a th:href="@{/req/p1?username='qqq'}">@RequestMapping param --> /req/p1  </a></br>
+<a th:href="@{/req/p1(username='admin')}">@RequestMapping param --> /req/p1  </a></br>
+
+<a th:href="@{/req/p2(username='ww')}">@RequestMapping param --> /req/p2  </a></br>
+<a th:href="@{/req/p2(username='admin')}">@RequestMapping param --> /req/p2  </a></br>
+
+<a th:href="@{/req/p3(username='admin',pwd=123)}">@RequestMapping param --> /req/p3  </a></br>
+<a th:href="@{/req/p3(username='admin',pwd=111)}">@RequestMapping param --> /req/p3  </a></br>
+
+<h3> headers</h3>
+<a th:href="@{/req/h1(username='admin',pwd=111)}">@RequestMapping param --> /req/h1  </a></br>
+<a th:href="@{/req/h2(username='admin',pwd=111)}">@RequestMapping param --> /req/h2  </a></br>
+
+</body>
+</html>
